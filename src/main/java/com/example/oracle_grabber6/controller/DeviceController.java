@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/devices")
@@ -22,4 +23,11 @@ public class DeviceController {
         return devices;
     }
 
+    @RequestMapping(value = "/single")
+    public TrDevice getSingleDevice() {
+        Optional<TrDevice> device = deviceRepository.findById(Long.valueOf(1931));
+        TrDevice trDevice = device.get();
+        return trDevice;
+
+    }
 }
